@@ -1,29 +1,33 @@
 import React from "react";
-// import logo from "./logo.svg";
+import headerImg from "./images/undraw_Artificial_intelligence_comp.svg";
 import "./App.css";
+
+// components
+import Flex from "./components/utils/Flex";
 
 function App() {
     return (
         <>
-            <h1>Hello, World!</h1>
-            <h2>Hello, World!</h2>
-            <h3>Hello, World!</h3>
-            <h4>Hello, World!</h4>
-            <h5>Hello, World!</h5>
-            <h6>Hello, World!</h6>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                mi nisi, ultrices a iaculis sit amet, sollicitudin vitae risus.
-                Vivamus tortor libero, hendrerit sit amet interdum id, ultrices
-                sit amet massa. Nullam cursus enim ac nisl vulputate, a
-                fringilla quam rhoncus. Phasellus ut elementum magna. Nunc vitae
-                scelerisque nibh. Nunc quis ex ac eros tempus condimentum. Duis
-                ut gravida quam. Donec eu tincidunt purus. Donec posuere auctor
-                lectus ac pulvinar. Nam aliquam porta velit, non consequat
-                tellus semper finibus. Nulla vestibulum rhoncus ex, laoreet
-                viverra dolor blandit at.
-            </p>
-            <small>small</small>
+            <div className="container">
+                <Flex dir="row">
+                    <div style={{ width: "350px" }}>
+                        <img src={headerImg} width="100%" alt="Machine Learning"/>
+                    </div>
+                    <div style={{ width: "700px" }}>
+                        <h1>Teach a Machine</h1>
+                        <p>
+                            This tool allows you to teach a machine to classify
+                            images. Create at least one class of image, then
+                            upload example images of the object you want to
+                            classify, then train the machine. Now you can upload
+                            new images and the machine will tell you what they
+                            are.
+                        </p>
+                        <button>Start Teaching</button>
+                    </div>
+                </Flex>
+                <hr></hr>
+            </div>
         </>
     );
 }

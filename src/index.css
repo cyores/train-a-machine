@@ -1,15 +1,57 @@
 /**
  * Colors:
- * Dark bluegrey: #282C34
- * Light blue:    #61DAFB
+ * BG:               #282C34
+ * Primary:          #61DAFB
+ * Analogous Right:  #618DFB
+ * Complement:       #FB8261
  */
 
 :root {
     /* Colors */
     --color-bg: rgb(40, 44, 52);
-    --color-primary: rgb(95, 217, 250);
-    --color-secondary: rgb(250, 95, 140);
+
+    --color-primary-hue: 193;
+    --color-primary-sat: 95%;
+    --color-primary-lit: 68%;
+    --color-primary: hsl(
+        var(--color-primary-hue),
+        var(--color-primary-sat),
+        var(--color-primary-lit)
+    );
+    --color-primary-hover: hsl(
+        var(--color-primary-hue),
+        var(--color-primary-sat),
+        72%
+    );
+    --color-primary-focus: hsl(
+        var(--color-primary-hue),
+        var(--color-primary-sat),
+        64%
+    );
+
+    --color-analogous-hue: 223;
+    --color-analogous-sat: 95%;
+    --color-analogous-lit: 68%;
+    --color-analogous: hsl(
+        var(--color-analogous-hue),
+        var(--color-analogous-sat),
+        var(--color-analogous-lit)
+    );
+    --color-analogous-hover: hsl(
+        var(--color-analogous-hue),
+        var(--color-analogous-sat),
+        72%
+    );
+    --color-analogous-focus: hsl(
+        var(--color-analogous-hue),
+        var(--color-analogous-sat),
+        64%
+    );
+
+    --color-complement: hsl(13, 95%, 68%);
+
     --color-text: hsl(220, 13%, 97%);
+    --color-text-dark: hsl(220, 13%, 7%);
 
     /* Text Sizing */
     --text-base-size: 1em;
@@ -51,6 +93,24 @@ body {
     color: var(--color-text);
 }
 
+/* Containers */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 80rem;
+    margin: var(--space-xl) auto;
+    padding: 0 var(--space-xl);
+    box-sizing: border-box;
+}
+.container-full {
+    position: relative;
+    width: 100%;
+    margin: var(--space-xl) auto;
+    padding: 0 var(--space-xl);
+    box-sizing: border-box;
+}
+
+/* Text */
 h1,
 h2,
 h3,
@@ -59,37 +119,72 @@ h5,
 h6 {
     font-weight: 300;
     letter-spacing: -0.1rem;
-    margin-bottom: var(--space-unit);
+    margin-bottom: var(--space-xs);
 }
 h1 {
     font-size: var(--text-xxxxl);
-    line-height: var(--space-xxxxs);
+    line-height: 1.125;
 }
 h2 {
     font-size: var(--text-xxxl);
-    line-height: var(--space-xxxs);
+    line-height: 1.13;
 }
 h3 {
     font-size: var(--text-xxl);
-    line-height: var(--space-xxs);
+    line-height: 1.135;
 }
 h4 {
     font-size: var(--text-xl);
-    line-height: var(--space-xs);
+    line-height: 1.14;
 }
 h5 {
     font-size: var(--text-lg);
-    line-height: var(--space-sm);
+    line-height: 1.15;
 }
 h6 {
     font-size: var(--text-md);
-    line-height: var(--space-md);
+    line-height: 1.2;
 }
 p {
     font-size: var(--text-base-size);
 }
 a {
     text-decoration: none;
+}
+
+/* Button */
+button {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--text-md);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background: var(--color-primary);
+    background: linear-gradient(
+        to bottom right,
+        var(--color-primary),
+        var(--color-analogous)
+    );
+    color: var(--color-text-dark);
+    border: none;
+    box-sizing: border-box;
+    border-radius: 2rem;
+}
+button:hover {
+    background: var(--color-primary-hover);
+    background: linear-gradient(
+        to bottom right,
+        var(--color-primary-hover),
+        var(--color-analogous-hover)
+    );
+}
+button:focus {
+    background: var(--color-primary-focus);
+    background: linear-gradient(
+        to bottom right,
+        var(--color-primary-focus),
+        var(--color-analogous-focus)
+    );
 }
 
 /* Utilities */
@@ -119,4 +214,9 @@ a {
 }
 .u-p5 {
     padding: var(--space-xxxxl);
+}
+hr {
+    border-width: 0;
+    border-top: var(--space-xxxxs) solid var(--color-primary);
+    margin: var(--space-xl) 0;
 }
