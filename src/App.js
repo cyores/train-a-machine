@@ -27,6 +27,17 @@ function App() {
                     </div>
                 </Flex>
                 <hr></hr>
+                <Flex dir="col">
+                    <div>
+                        <h3>Create Classes</h3>
+                    </div>
+                    <div>
+                        <h3>Upload Training Images</h3>
+                    </div>
+                    <div>
+                        <h3>Test Your Model</h3>
+                    </div>
+                </Flex>
             </div>
         </>
     );

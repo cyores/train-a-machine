@@ -91,6 +91,7 @@ body {
     line-height: calc(var(--space-unit) * 1.5);
     background: var(--color-bg);
     color: var(--color-text);
+    min-height: 100vh;
 }
 
 /* Containers */
@@ -98,8 +99,8 @@ body {
     position: relative;
     width: 100%;
     max-width: 80rem;
-    margin: var(--space-xl) auto;
-    padding: 0 var(--space-xl);
+    margin: var(--space-lg) auto;
+    padding: 0 var(--space-lg);
     box-sizing: border-box;
 }
 .container-full {
