@@ -84,6 +84,10 @@
 
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: "Nunito Sans", sans-serif;
@@ -91,7 +95,8 @@ body {
     line-height: calc(var(--space-unit) * 1.5);
     background: var(--color-bg);
     color: var(--color-text);
-    min-height: 100vh;
+    /* TEMP AT 200vh */
+    min-height: 200vh;
 }
 
 /* Containers */
@@ -154,7 +159,7 @@ a {
 }
 
 /* Button */
-button {
+.btn {
     padding: var(--space-sm) var(--space-md);
     font-size: var(--text-md);
     text-align: center;
@@ -170,8 +175,9 @@ button {
     border: none;
     box-sizing: border-box;
     border-radius: 2rem;
+    outline: none;
 }
-button:hover {
+.btn:hover {
     background: var(--color-primary-hover);
     background: linear-gradient(
         to bottom right,
@@ -179,13 +185,55 @@ button:hover {
         var(--color-analogous-hover)
     );
 }
-button:focus {
+.btn:focus {
     background: var(--color-primary-focus);
     background: linear-gradient(
         to bottom right,
         var(--color-primary-focus),
         var(--color-analogous-focus)
     );
+}
+
+.btn-input-del {
+    cursor: pointer;
+    border-radius: 50%;
+    width: var(--space-lg);
+    height: var(--space-lg);
+    font-size: var(--text-base-size);
+    color: rgb(216, 0, 0);
+    background: transparent;
+    margin-left: calc(var(--space-lg) * -1.25);
+    margin-right: calc(var(--space-lg) * 1.25);
+    border: 2px solid rgb(216, 0, 0);
+    transition: all 0.25s ease-in-out;
+    outline: none;
+    text-align: center;
+}
+.btn-input-del:hover {
+    background: rgba(216, 0, 0, 0.90);
+    border: 2px solid transparent;
+    color: var(--color-text);
+}
+
+/* Input */
+.input-with-btn {
+    font-size: var(--text-base-size);
+    color: var(--color-text);
+    background: transparent;
+    padding: var(--space-sm);
+    padding-right: var(--space-xl);
+    margin: var(--space-xs) 0;
+    margin-left: calc(var(--space-lg) * 1.25);
+    border: 2px solid transparent;
+    border-bottom: 2px solid var(--color-primary);
+    transition: all 0.25s ease-in-out;
+    outline: none;
+}
+.input-with-btn:focus {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--color-primary);
+    border-radius: 2rem;
+    transition: all 0.25s ease-in-out;
 }
 
 /* Utilities */
@@ -198,6 +246,7 @@ button:focus {
 .u-float-right {
     float: right;
 }
+/* Paddings */
 .u-p0 {
     padding: 0;
 }
@@ -216,8 +265,51 @@ button:focus {
 .u-p5 {
     padding: var(--space-xxxxl);
 }
+/* Margins */
+.u-m0 {
+    margin: 0;
+}
+.u-m1 {
+    margin: var(--space-unit);
+}
+.u-m2 {
+    margin: var(--space-md);
+}
+.u-m3 {
+    margin: var(--space-lg);
+}
+.u-m4 {
+    margin: var(--space-xxl);
+}
+.u-m5 {
+    margin: var(--space-xxxxl);
+}
+/* Margins Y */
+.u-my1 {
+    margin-top: var(--space-unit);
+    margin-bottom: var(--space-unit);
+}
+.u-my2 {
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+.u-my3 {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+.u-my4 {
+    margin-top: var(--space-xxl);
+    margin-bottom: var(--space-xxl);
+}
+.u-my5 {
+    margin-top: var(--space-xxxxl);
+    margin-bottom: var(--space-xxxxl);
+}
+
+/* HR */
 hr {
     border-width: 0;
     border-top: var(--space-xxxxs) solid var(--color-primary);
-    margin: var(--space-xl) 0;
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-lg);
 }

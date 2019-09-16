@@ -1,12 +1,24 @@
+// CLASS
 export const ADD_CLASS = "ADD_CLASS";
+export const DELETE_CLASS = "DELETE_CLASS";
+export const UPDATE_CLASS = "UPDATE_CLASS";
 
-/**
- * Add Class.
- *
- * @param {string} newClass Name of new ML class.
- * 
- * @return {Object} Send to reducer.
- */
+// SECTION
+export const UPDATE_ACTIVE_SECTION = "UPDATE_ACTIVE_SECTION";
+
+
 export function addClass(newClass) {
     return { type: ADD_CLASS, newClass };
+}
+
+export function deleteClass(classID) {
+    return { type: DELETE_CLASS, classID };
+}
+
+export function updateClass(classID, newName) {
+    return { type: UPDATE_CLASS, classID, newName };
+}
+
+export function updateActiveSection(section) {
+    return { type: UPDATE_ACTIVE_SECTION, section };
 }
