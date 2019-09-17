@@ -58,7 +58,7 @@ class Section extends Component {
                     ) : (
                         <div
                             style={{
-                                height: 0,
+                                height: "auto",
                                 overflow: "hidden"
                             }}
                         >

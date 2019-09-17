@@ -20,10 +20,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 class ClassList extends Component {
-    state = {};
 
     render() {
-        console.log("clstate", this.props);
         return (
             <div className="u-my2">
                 <Flex dir="colcenter">

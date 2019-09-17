@@ -235,6 +235,9 @@ a {
     border-radius: 2rem;
     transition: all 0.25s ease-in-out;
 }
+input[type="file"] {
+    display: none;
+}
 
 /* Utilities */
 .u-full-width {
