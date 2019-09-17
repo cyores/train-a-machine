@@ -9,7 +9,7 @@ import { updateActiveSection } from "./actions/index";
 import Flex from "./components/utils/Flex";
 import Section from "./components/Section";
 import ClassList from "./components/ClassList";
-import UploadImages from "./components/UploadImages";
+import Train from "./components/Train";
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -133,7 +133,7 @@ class App extends Component {
                                 upload images. The more sample images the better!
                             </p>
 
-                            <UploadImages />
+                            <Train />
 
                             <button
                                 className="btn u-float-right"

@@ -1,9 +1,17 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import { connect } from "react-redux";
 import UploadImg from "../images/undraw_going_up_comp.svg";
 
+import { addImageBatch } from "../actions/index";
+
+// components
 import Flex from "./utils/Flex";
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addImageBatch: images => dispatch(addImageBatch(images))
+    };
+}
 
 class Uploader extends Component {
     constructor(props) {
@@ -17,12 +25,20 @@ class Uploader extends Component {
     onChange(input) {
         const files = Array.from(input.target.files);
         this.setState({ uploading: true });
+        
         let imgs = [];
         files.forEach((file, i) => {
-            console.log(i, file);
             imgs.push(URL.createObjectURL(file));
         });
+
         this.setState({ uploading: false, images: imgs });
+
+        if (this.props.imagesFor === "training") {
+            this.props.addImageBatch({
+                label: this.props.title,
+                images: imgs
+            });
+        }
     }
     render() {
         return (
@@ -55,7 +71,9 @@ class Uploader extends Component {
                     ) : (
                         <Flex>
                             {this.state.images.map((img, index) => (
-                                <React.Fragment key={"img" + this.props.title + index}>
+                                <React.Fragment
+                                    key={"img" + this.props.title + index}
+                                >
                                     <div
                                         style={{
                                             flex: "1 0 100px",
@@ -74,4 +92,7 @@ class Uploader extends Component {
     }
 }
 
-export default Uploader;
+export default connect(
+    null,
+    mapDispatchToProps
+)(Uploader);
