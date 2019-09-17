@@ -31,7 +31,7 @@ class UploadImages extends Component {
                     {this.props.classes.map(c => (
                         <Area key={`area-${c.id}`}>
                             <h5>{c.name}</h5>
-                            <Uploader/>
+                            <Uploader title={c.name}/>
                         </Area>
                     ))}
                 </Flex>
