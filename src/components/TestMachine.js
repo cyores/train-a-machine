@@ -12,13 +12,23 @@ const Area = styled.div`
     margin: var(--space-xxxs);
     margin-bottom: var(--space-sm);
     background: #eee;
-    border-radius: 2rem;
+    border-radius: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     color: var(--color-text-dark);
     flex: 1 0 350px;
     & > h5 {
         margin: 1rem;
     }
+`;
+
+const Card = styled.div`
+    flex: 0 0 200px;
+    border-radius: 1rem;
+    margin: var(--space-xxxs);
+    margin-bottom: var(--space-lg);
+    background: #eee;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    color: var(--color-text-dark);
 `;
 
 const mapStateToProps = state => {
@@ -58,6 +68,7 @@ class TestMachine extends Component {
             <>
                 <Flex>
                     <Area>
+                        <h5>Upload testing images</h5>
                         <Uploader
                             title="Upload Test Image(s)"
                             imagesFor="validation"
@@ -82,29 +93,39 @@ class TestMachine extends Component {
                 {this.state.done ? (
                     <>
                         <h3>Results:</h3>
-                        {this.state.results.map((result, index) => (
-                            <Flex key={`result-${index}`}>
-                                <div style={{ flex: "1 0 40%" }}>
-                                    <img
-                                    style={{maxHeight: "250px", textAlign: "center"}}
-                                        src={this.props.testImages[index]}
-                                        alt="results"
-                                    />
-                                </div>
-                                <div style={{ flex: "1 0 40%" }}>
-                                    <Flex dir="col">
+                        <Flex>
+                            {this.state.results.map((result, index) => (
+                                <Card key={`result-${index}`}>
+                                    <Flex dir="colcenter">
+                                        <img
+                                            style={{
+                                                height: "200px",
+                                                width: "100%",
+                                                textAlign: "center",
+                                                borderRadius: "1rem 1rem 0 0"
+                                            }}
+                                            src={this.props.testImages[index]}
+                                            alt="results"
+                                        />
                                         {result.map((value, i) => (
-                                            <p key={`label-conf-${i}`}>
-                                                {value.label}{" "}
+                                            <p
+                                                key={`label-conf-${i}`}
+                                                style={
+                                                    i === 0
+                                                        ? { fontWeight: 600 }
+                                                        : null
+                                                }
+                                            >
+                                                {value.label}:{" "}
                                                 {(
                                                     value.confidence * 100
                                                 ).toFixed(2) + "%"}
                                             </p>
                                         ))}
                                     </Flex>
-                                </div>
-                            </Flex>
-                        ))}
+                                </Card>
+                            ))}
+                        </Flex>
                     </>
                 ) : null}
             </>

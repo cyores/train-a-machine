@@ -15,7 +15,7 @@ const Area = styled.div`
     margin: var(--space-xxxs);
     margin-bottom: var(--space-sm);
     background: #eee;
-    border-radius: 2rem;
+    border-radius: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     color: var(--color-text-dark);
     flex: 1 0 350px;
@@ -40,8 +40,7 @@ function mapDispatchToProps(dispatch) {
 class Train extends Component {
     constructor(props) {
         super(props);
-        this.machine = new Machine();
-        this.machine.initialize();
+        this.machine = new Machine();      
         this.state = {
             training: false,
             currLoss: 0,
@@ -51,6 +50,7 @@ class Train extends Component {
     }
     trainMachine() {
         this.setState({ training: true });
+        this.machine.initialize(this.props.classes.length);
         // setTimeout to allow UI to update before training.
         // training could take some time and give the UI the feel of freezing
         // the "Start Training" button would take a second to actually go away

@@ -87,7 +87,7 @@ class Uploader extends Component {
                                         <img
                                             src={img}
                                             // width="100%"
-                                            style={{ maxHeight: "200px" }}
+                                            style={{ maxHeight: "100px" }}
                                             alt=""
                                         />
                                     </div>

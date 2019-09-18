@@ -7,8 +7,11 @@ export default class Machine {
         console.log("Machine is alive");
     }
 
-    async initialize() {
-        this.features = await ml5.featureExtractor("MobileNet");
+    async initialize(numClasses) {
+        if (numClasses === 1) numClasses = 2;
+        this.features = await ml5.featureExtractor("MobileNet", {
+            numLabels: numClasses
+        });
         this.classifier = await this.features.classification();
     }
 
@@ -48,13 +51,12 @@ export default class Machine {
      * @return {Promise} A Promise that resolves when the image is predicted.
      */
     classify(images) {
-
         let promiseArray = [];
         images.forEach(image => {
             let img = new Image();
             img.src = image;
             promiseArray.push(this.classifier.classify(img));
-        })
+        });
         return promiseArray;
     }
 }
