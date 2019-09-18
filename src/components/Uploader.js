@@ -25,7 +25,7 @@ class Uploader extends Component {
     onChange(input) {
         const files = Array.from(input.target.files);
         this.setState({ uploading: true });
-        
+
         let imgs = [];
         files.forEach((file, i) => {
             imgs.push(URL.createObjectURL(file));
@@ -80,7 +80,12 @@ class Uploader extends Component {
                                             margin: "1rem"
                                         }}
                                     >
-                                        <img src={img} width="100%" alt="" />
+                                        <img
+                                            src={img}
+                                            // width="100%"
+                                            style={{ maxHeight: "200px" }}
+                                            alt=""
+                                        />
                                     </div>
                                 </React.Fragment>
                             ))}

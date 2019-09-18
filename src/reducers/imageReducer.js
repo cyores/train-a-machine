@@ -2,7 +2,8 @@ import { ADD_IMAGE_BATCH } from "../actions/index";
 
 // array of labeldImages objects
 const initalState = {
-    trainingImages: []
+    trainingImages: [],
+    testImage: ""
 };
 
 // labled imagefs looks like this:

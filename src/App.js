@@ -18,46 +18,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-
-        // SECTION ONE
-        this.setSecOneRef = element => {
-            this.secOne = element;
-        };
-
-        this.scrollToSecOne = () => {
-            if (this.secOne) {
-                window.scrollTo(0, this.secOne.offsetTop);
-                this.props.updateActiveSection("createClasses");
-            }
-        };
-
-        // SECTION TWO
-        this.setSecTwoRef = element => {
-            this.secTwo = element;
-        };
-
-        this.scrollToSecTwo = () => {
-            if (this.secTwo) {
-                window.scrollTo(0, this.secTwo.offsetTop);
-                this.props.updateActiveSection("uploadImages");
-            }
-        };
-
-        // SECTION THREE
-        this.setSecThreeRef = element => {
-            this.secThree = element;
-        };
-
-        this.scrollToSecThree = () => {
-            if (this.secThree) {
-                window.scrollTo(0, this.secThree.offsetTop);
-                this.props.updateActiveSection("testModel");
-            }
-        };
-    }
-
     render() {
         return (
             <>
@@ -82,7 +42,11 @@ class App extends Component {
                             </p>
                             <button
                                 className="btn"
-                                onClick={this.scrollToSecOne}
+                                onClick={() =>
+                                    this.props.updateActiveSection(
+                                        "createClasses"
+                                    )
+                                }
                             >
                                 Start Teaching
                             </button>
@@ -90,7 +54,6 @@ class App extends Component {
                     </Flex>
                     <hr></hr>
                     <Flex dir="col">
-                        <span ref={this.setSecOneRef}></span>
                         <Section
                             name="createClasses"
                             title="Create Classes"
@@ -112,16 +75,16 @@ class App extends Component {
 
                             <button
                                 className="btn u-float-right"
-                                onClick={this.scrollToSecTwo}
+                                onClick={() =>
+                                    this.props.updateActiveSection(
+                                        "uploadImages"
+                                    )
+                                }
                             >
                                 Next Section
                             </button>
                         </Section>
 
-                        <span
-                            style={{ padding: "1rem" }}
-                            ref={this.setSecTwoRef}
-                        ></span>
                         <Section
                             name="uploadImages"
                             title="Upload Training Images"
@@ -130,23 +93,22 @@ class App extends Component {
                             <p>
                                 Upload sample images of each class to train the
                                 machine on. Click the orange upload button to
-                                upload images. The more sample images the better!
+                                upload images. The more sample images the
+                                better!
                             </p>
 
                             <Train />
 
                             <button
                                 className="btn u-float-right"
-                                onClick={this.scrollToSecThree}
+                                onClick={() =>
+                                    this.props.updateActiveSection("testModel")
+                                }
                             >
                                 Next Section
                             </button>
                         </Section>
 
-                        <span
-                            style={{ padding: "1rem" }}
-                            ref={this.setSecThreeRef}
-                        ></span>
                         <Section
                             name="testModel"
                             title="Test Your Model"

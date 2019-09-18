@@ -21,7 +21,6 @@ export default function classReducer(state = initalState, action) {
                 classes: state.classes.filter(item => item.id !== action.classID)
             });
         case UPDATE_CLASS: {
-            console.log("updating", action.classID, action.newName);
             return Object.assign({}, state, {
                 classes: state.classes.map(item => {
                     if (item.id === action.classID) {

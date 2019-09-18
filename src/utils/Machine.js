@@ -16,37 +16,27 @@ export default class Machine {
      * Train.
      *
      * @param {array} labeledImages Array of labledImages objects.
+     * @param {function} callback  A function to be called to follow the progress of the training.
      *
      * @return {Promise} A promise that resolves once the classifier is done training.
      */
-    train(labeledImages) {
-        console.log("training", labeledImages);
-        // labeledImages.forEach((imageSet, i) => {
-        //     imageSet.images.forEach(image => {
-        //         this.classifier.addImage(image, imageSet.label);
-        //     });
-        // });
+    train(labeledImages, callback) {
+        console.log("adding images", labeledImages);
 
         let promiseArray = [];
-        // labeledImages.forEach((imageSet, i) => {
-        //     imageSet.images.forEach(image => {
-        //         let reader = new FileReader();
-        //         reader.onloadend = () => {
-        //             this.classifier.addImage(reader.result, imageSet.label);
-        //         };
-        //         promiseArray.push(reader.readAsDataURL(image));
-        //     });
-        // });
 
         labeledImages.forEach((imageSet, i) => {
             imageSet.images.forEach(image => {
                 let img = new Image();
                 img.src = image;
-                promiseArray.push(this.classifier.addImage(img, imageSet.label));
+                promiseArray.push(
+                    this.classifier.addImage(img, imageSet.label)
+                );
             });
         });
-        Promise.all(promiseArray, () => {
-            return this.classifier.train();
+        console.log("starting training");
+        Promise.all(promiseArray).then(() => {
+            this.classifier.train(callback);
         });
     }
 
