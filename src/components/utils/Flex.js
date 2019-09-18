@@ -5,12 +5,32 @@ const FlexRow = styled.div`
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+    padding: 0;
+    margin: 0;
+`;
+
+const FlexRowLeft = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+`;
+
+const FlexRowRight = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
 `;
 
 const FlexCol = styled.div`
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
+    padding: 0;
+    margin: 0;
 `;
 
 const FlexColCenter = styled.div`
@@ -18,6 +38,8 @@ const FlexColCenter = styled.div`
     flex-flow: column wrap;
     justify-content: space-around;
     align-items: center;
+    padding: 0;
+    margin: 0;
 `;
 
 export default function Flex(props) {
@@ -27,6 +49,11 @@ export default function Flex(props) {
     else if(props.dir === "colcenter") {
         return <FlexColCenter>{props.children}</FlexColCenter>;
     }
-
+    else if(props.dir === "rowleft") {
+        return <FlexRowLeft>{props.children}</FlexRowLeft>
+    }
+    else if(props.dir === "rowright") {
+        return <FlexRowRight>{props.children}</FlexRowRight>
+    }
     return <FlexRow>{props.children}</FlexRow>;
 }

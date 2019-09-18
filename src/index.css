@@ -109,9 +109,10 @@ body {
 }
 .container-full {
     position: relative;
-    width: 100%;
-    margin: var(--space-xl) auto;
-    padding: 0 var(--space-xl);
+    width: 100vw;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -152,9 +153,6 @@ h6 {
 }
 p {
     font-size: var(--text-base-size);
-}
-a {
-    text-decoration: none;
 }
 
 /* Button */

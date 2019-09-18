@@ -11,8 +11,8 @@ import Section from "./components/Section";
 import ClassList from "./components/ClassList";
 import Train from "./components/Train";
 import TestMachine from "./components/TestMachine";
-
-
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -24,6 +24,8 @@ class App extends Component {
     render() {
         return (
             <>
+                <Header />
+
                 <div className="container">
                     <Flex dir="row">
                         <div style={{ width: "350px" }}>
@@ -105,7 +107,9 @@ class App extends Component {
                             <button
                                 className="btn u-float-right"
                                 onClick={() =>
-                                    this.props.updateActiveSection("testMachine")
+                                    this.props.updateActiveSection(
+                                        "testMachine"
+                                    )
                                 }
                             >
                                 Next Section
@@ -117,10 +121,12 @@ class App extends Component {
                             title="Test the Machine"
                             number="3"
                         >
-                            <TestMachine/>
+                            <TestMachine />
                         </Section>
                     </Flex>
                 </div>
+
+                <Footer />
             </>
         );
     }
