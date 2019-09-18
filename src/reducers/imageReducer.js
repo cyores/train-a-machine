@@ -1,9 +1,9 @@
-import { ADD_IMAGE_BATCH } from "../actions/index";
+import { ADD_IMAGE_BATCH, ADD_TEST_IMAGES } from "../actions/index";
 
 // array of labeldImages objects
 const initalState = {
     trainingImages: [],
-    testImage: ""
+    testImages: []
 };
 
 // labled imagefs looks like this:
@@ -19,6 +19,10 @@ export default function imageReducer(state = initalState, action) {
                 trainingImages: state.trainingImages.concat(
                     action.labeledImages
                 )
+            });
+        case ADD_TEST_IMAGES:
+            return Object.assign({}, state, {
+                testImages: state.testImages.concat(action.images)
             });
         default:
             return state;

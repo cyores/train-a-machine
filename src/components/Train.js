@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import Machine from "../utils/Machine";
 
+import { updateMachine } from "../actions/index";
+
 // components
 import Flex from "./utils/Flex";
 import Uploader from "./Uploader";
@@ -29,6 +31,12 @@ const mapStateToProps = state => {
     };
 };
 
+function mapDispatchToProps(dispatch) {
+    return {
+        updateMachine: machine => dispatch(updateMachine(machine))
+    };
+}
+
 class Train extends Component {
     constructor(props) {
         super(props);
@@ -43,12 +51,16 @@ class Train extends Component {
     }
     trainMachine() {
         this.setState({ training: true });
-        // setTimeout to allow UI to update before training
+        // setTimeout to allow UI to update before training.
         // training could take some time and give the UI the feel of freezing
         // the "Start Training" button would take a second to actually go away
         setTimeout(() => {
             let first = true;
             this.machine.train(this.props.trainingImages, loss => {
+                if (!first && loss === null) {
+                    this.setState({ doneTraining: true });
+                    this.props.updateMachine(this.machine);
+                }
                 if (first) {
                     this.setState({ firstLoss: loss });
                     first = false;
@@ -90,4 +102,7 @@ class Train extends Component {
     }
 }
 
-export default connect(mapStateToProps)(Train);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Train);

@@ -10,6 +10,9 @@ import Flex from "./components/utils/Flex";
 import Section from "./components/Section";
 import ClassList from "./components/ClassList";
 import Train from "./components/Train";
+import TestMachine from "./components/TestMachine";
+
+
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -102,7 +105,7 @@ class App extends Component {
                             <button
                                 className="btn u-float-right"
                                 onClick={() =>
-                                    this.props.updateActiveSection("testModel")
+                                    this.props.updateActiveSection("testMachine")
                                 }
                             >
                                 Next Section
@@ -110,10 +113,12 @@ class App extends Component {
                         </Section>
 
                         <Section
-                            name="testModel"
-                            title="Test Your Model"
+                            name="testMachine"
+                            title="Test the Machine"
                             number="3"
-                        ></Section>
+                        >
+                            <TestMachine/>
+                        </Section>
                     </Flex>
                 </div>
             </>

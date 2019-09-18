@@ -43,11 +43,18 @@ export default class Machine {
     /**
      * Predict.
      *
-     * @param {string} image Data URL of the image.
+     * @param {array} images Data URL of the image.
      *
      * @return {Promise} A Promise that resolves when the image is predicted.
      */
-    predict(image) {
-        return this.classifier.classify(image);
+    classify(images) {
+
+        let promiseArray = [];
+        images.forEach(image => {
+            let img = new Image();
+            img.src = image;
+            promiseArray.push(this.classifier.classify(img));
+        })
+        return promiseArray;
     }
 }
