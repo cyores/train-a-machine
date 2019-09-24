@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import Machine from "../utils/Machine";
 
-import { updateMachine } from "../actions/index";
+import { updateMachine, updateActiveSection } from "../actions/index";
 
 // components
 import Flex from "./utils/Flex";
@@ -33,14 +33,16 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
     return {
-        updateMachine: machine => dispatch(updateMachine(machine))
+        updateMachine: machine => dispatch(updateMachine(machine)),
+        updateActiveSection: activeSection =>
+            dispatch(updateActiveSection(activeSection))
     };
 }
 
 class Train extends Component {
     constructor(props) {
         super(props);
-        this.machine = new Machine();      
+        this.machine = new Machine();
         this.state = {
             training: false,
             currLoss: 0,
@@ -70,34 +72,46 @@ class Train extends Component {
     }
     render() {
         return (
-            <div className="u-my2">
-                <Flex>
-                    {this.props.classes.map(c => (
-                        <Area key={`area-${c.id}`}>
-                            <h5>{c.name}</h5>
-                            <Uploader title={c.name} imagesFor="training" />
-                        </Area>
-                    ))}
-                </Flex>
-
-                {this.props.trainingImages.length === 0 ? null : (
+            <>
+                <div className="u-my2">
                     <Flex>
-                        {this.state.training ? (
-                            <Progress
-                                firstLoss={this.state.firstLoss}
-                                currLoss={this.state.currLoss}
-                            ></Progress>
-                        ) : (
-                            <button
-                                className="btn"
-                                onClick={() => this.trainMachine()}
-                            >
-                                Train the Machine
-                            </button>
-                        )}
+                        {this.props.classes.map(c => (
+                            <Area key={`area-${c.id}`}>
+                                <h5>{c.name}</h5>
+                                <Uploader title={c.name} imagesFor="training" />
+                            </Area>
+                        ))}
                     </Flex>
+
+                    {this.props.trainingImages.length === 0 ? null : (
+                        <Flex>
+                            {this.state.training ? (
+                                <Progress
+                                    firstLoss={this.state.firstLoss}
+                                    currLoss={this.state.currLoss}
+                                ></Progress>
+                            ) : (
+                                <button
+                                    className="btn"
+                                    onClick={() => this.trainMachine()}
+                                >
+                                    Train the Machine
+                                </button>
+                            )}
+                        </Flex>
+                    )}
+                </div>
+                {this.state.doneTraining && (
+                    <button
+                        className="btn u-float-right"
+                        onClick={() =>
+                            this.props.updateActiveSection("testMachine")
+                        }
+                    >
+                        Next Section &rarr;
+                    </button>
                 )}
-            </div>
+            </>
         );
     }
 }

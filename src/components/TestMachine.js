@@ -47,9 +47,9 @@ class TestMachine extends Component {
             results: []
         };
     }
-    async testMachine() {
+    testMachine() {
         this.setState({ classifying: true });
-        setTimeout(async () => {
+        setTimeout(() => {
             let promiseArray = this.props.machine.classify(
                 this.props.testImages
             );
@@ -62,6 +62,9 @@ class TestMachine extends Component {
                 });
             });
         });
+    }
+    save() {
+        this.props.machine.save();
     }
     render() {
         return (
@@ -128,6 +131,9 @@ class TestMachine extends Component {
                         </Flex>
                     </>
                 ) : null}
+                <button className="btn" onClick={() => this.save()}>
+                    Save Machine
+                </button>
             </>
         );
     }

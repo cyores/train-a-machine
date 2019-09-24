@@ -58,7 +58,7 @@ class Header extends Component {
                             </div>
                         </Flex>
                     </Group>
-                    <Group>
+                    {/* <Group>
                         <Flex dir="rowright">
                             <NavLink>
                                 <p>Classifier</p>
@@ -70,7 +70,7 @@ class Header extends Component {
                                 <p>DCGAN</p>
                             </NavLink>
                         </Flex>
-                    </Group>
+                    </Group> */}
                 </Flex>
             </Wrapper>
         );

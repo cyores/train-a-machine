@@ -59,4 +59,12 @@ export default class Machine {
         });
         return promiseArray;
     }
+
+    /**
+     * Save
+     * Save the currently trained model
+     */
+    save() {
+        this.classifier.save(() => console.log("saved!"));
+    }
 }

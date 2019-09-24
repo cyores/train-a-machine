@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
-// import { updateActiveSection } from "../actions/index";
+import { updateActiveSection } from "../actions/index";
 
 const Number = styled.div`
     background: transparent;
@@ -21,6 +21,13 @@ const Number = styled.div`
 const mapStateToProps = state => {
     return { activeSection: state.sectionReducer.activeSection };
 };
+
+function mapDispatchToProps(dispatch) {
+    return {
+        updateActiveSection: activeSection =>
+            dispatch(updateActiveSection(activeSection))
+    };
+}
 
 class Section extends Component {
     constructor(props) {
@@ -60,8 +67,15 @@ class Section extends Component {
                     >
                         <h3>
                             {this.state.complete ? (
-                                <Number style={{ borderColor: "rgb(0,200,20)" }}>
-                                    <span style={{ color: "rgb(0,200,20)", marginLeft: "-0.2rem" }}>
+                                <Number
+                                    style={{ borderColor: "rgb(0,200,20)" }}
+                                >
+                                    <span
+                                        style={{
+                                            color: "rgb(0,200,20)",
+                                            marginLeft: "-0.2rem"
+                                        }}
+                                    >
                                         &#10004;
                                     </span>
                                 </Number>
@@ -94,4 +108,7 @@ class Section extends Component {
     }
 }
 
-export default connect(mapStateToProps)(Section);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Section);

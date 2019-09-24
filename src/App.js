@@ -75,19 +75,6 @@ class App extends Component {
                             </p>
 
                             <ClassList />
-
-                            <br></br>
-
-                            <button
-                                className="btn u-float-right"
-                                onClick={() =>
-                                    this.props.updateActiveSection(
-                                        "uploadImages"
-                                    )
-                                }
-                            >
-                                Next Section
-                            </button>
                         </Section>
 
                         <Section
@@ -103,17 +90,6 @@ class App extends Component {
                             </p>
 
                             <Train />
-
-                            <button
-                                className="btn u-float-right"
-                                onClick={() =>
-                                    this.props.updateActiveSection(
-                                        "testMachine"
-                                    )
-                                }
-                            >
-                                Next Section
-                            </button>
                         </Section>
 
                         <Section
