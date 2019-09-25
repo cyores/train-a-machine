@@ -35,8 +35,14 @@ export function addTestImages(images) {
 }
 
 // MACHINE
+export const START_MACHINE = "START_MACHINE";
 export const UPDATE_MACHINE = "UPDATE_MACHINE";
+
+export function startMachine() {
+    return { type: START_MACHINE };
+}
 
 export function updateMachine(machine) {
     return { type: UPDATE_MACHINE, machine };
 }
+

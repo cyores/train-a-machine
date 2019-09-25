@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import headerImg from "./images/undraw_Artificial_intelligence_comp.svg";
 import "./App.css";
 import { connect } from "react-redux";
-import Machine from "../utils/Machine";
 
-import { updateActiveSection } from "./actions/index";
+import { updateActiveSection, startMachine } from "./actions/index";
 
 // components
 import Flex from "./components/utils/Flex";
@@ -18,7 +17,8 @@ import Uploader from "./components/Uploader";
 
 function mapDispatchToProps(dispatch) {
     return {
-        updateActiveSection: section => dispatch(updateActiveSection(section))
+        updateActiveSection: section => dispatch(updateActiveSection(section)),
+        startMachine: () => dispatch(startMachine())
     };
 }
 
@@ -28,6 +28,7 @@ class App extends Component {
         this.state = {
             show: "train" // train, uploadMachine
         };
+        this.props.startMachine();
     }
     render() {
         return (
@@ -108,6 +109,8 @@ class App extends Component {
 
                                 <ClassList />
                             </Section>
+                            
+                            <br></br>
 
                             <Section
                                 name="uploadImages"
