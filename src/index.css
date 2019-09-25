@@ -158,6 +158,7 @@ p {
 /* Button */
 .btn {
     padding: var(--space-sm) var(--space-md);
+    margin-right: var(--space-sm);
     font-size: var(--text-md);
     text-align: center;
     text-decoration: none;

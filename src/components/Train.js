@@ -78,7 +78,11 @@ class Train extends Component {
                         {this.props.classes.map(c => (
                             <Area key={`area-${c.id}`}>
                                 <h5>{c.name}</h5>
-                                <Uploader title={c.name} imagesFor="training" />
+                                <Uploader
+                                    title={c.name}
+                                    imagesFor="training"
+                                    helperText="Click here to upload training images"
+                                />
                             </Area>
                         ))}
                     </Flex>

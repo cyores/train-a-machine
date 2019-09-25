@@ -63,7 +63,7 @@ class Uploader extends Component {
                                     alt={"Upload images of" + this.props.title}
                                 />
                             </label>
-                            <small>Click to upload images</small>
+                            <small>{this.props.helperText}</small>
                             <input
                                 type="file"
                                 id={"upload-" + this.props.title}

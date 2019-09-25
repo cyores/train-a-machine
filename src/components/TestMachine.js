@@ -75,6 +75,7 @@ class TestMachine extends Component {
                         <Uploader
                             title="Upload Test Image(s)"
                             imagesFor="validation"
+                            helperText="Click here to upload testing images"
                         />
                     </Area>
                 </Flex>
