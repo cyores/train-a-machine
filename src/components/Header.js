@@ -58,19 +58,19 @@ class Header extends Component {
                             </div>
                         </Flex>
                     </Group>
-                    {/* <Group>
+                    <Group>
                         <Flex dir="rowright">
                             <NavLink>
                                 <p>Classifier</p>
                             </NavLink>
-                            <NavLink>
+                            {/* <NavLink>
                                 <p>Style Transfer</p>
                             </NavLink>
                             <NavLink>
                                 <p>DCGAN</p>
-                            </NavLink>
+                            </NavLink> */}
                         </Flex>
-                    </Group> */}
+                    </Group>
                 </Flex>
             </Wrapper>
         );

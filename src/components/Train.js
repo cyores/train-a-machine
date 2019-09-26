@@ -115,6 +115,8 @@ class Train extends Component {
                         Next Section &rarr;
                     </button>
                 )}
+
+                <br></br>
             </>
         );
     }

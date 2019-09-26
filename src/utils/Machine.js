@@ -67,4 +67,26 @@ export default class Machine {
     save() {
         this.classifier.save(() => console.log("saved!"));
     }
+
+    /**
+     * Load
+     * Loads the uploaded model.
+     *
+     * @param {file} model A file containing the model.
+     * @param {file} weights A file containing the model weight binary.
+     * @param {function} callback A callback function called when the model is done loading.
+     */
+    async load(model, weights, callback) {
+        let reader = new FileReader();
+        reader.onload = async event => {
+            let modelJSON = JSON.parse(event.target.result);
+            let numClasses = modelJSON.ml5Specs.mapStringToIndex.length;
+            console.log("found ", numClasses, "classes");
+            await this.initialize(numClasses);
+            console.log("loading model");
+            await this.classifier.load([model, weights]);
+            if (callback) callback();
+        };
+        reader.readAsText(model);
+    }
 }

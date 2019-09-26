@@ -94,6 +94,8 @@ class ClassList extends Component {
                         Next Section &rarr;
                     </button>
                 )}
+                
+                <br></br>
             </>
         );
     }

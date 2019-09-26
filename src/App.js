@@ -13,7 +13,7 @@ import Train from "./components/Train";
 import TestMachine from "./components/TestMachine";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Uploader from "./components/Uploader";
+import UploadMachine from "./components/UploadMachine";
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -109,8 +109,8 @@ class App extends Component {
 
                                 <ClassList />
                             </Section>
-                            
-                            <br></br>
+
+                            {/* <br></br> */}
 
                             <Section
                                 name="uploadImages"
@@ -144,10 +144,8 @@ class App extends Component {
                                     Upload a machine that you (or someone else)
                                     previously trained.
                                 </p>
-                                <Flex>
-                                    <Uploader helperText="Upload the model.json file here"></Uploader>
-                                    <Uploader helperText="Upload the model.weights.bin file here"></Uploader>
-                                </Flex>
+
+                                <UploadMachine />
                             </Section>
                         </div>
 

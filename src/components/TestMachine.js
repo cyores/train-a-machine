@@ -69,6 +69,9 @@ class TestMachine extends Component {
     render() {
         return (
             <>
+                <button className="btn" onClick={() => this.save()}>
+                    Save Machine
+                </button>
                 <Flex>
                     <Area>
                         <h5>Upload testing images</h5>
@@ -132,9 +135,6 @@ class TestMachine extends Component {
                         </Flex>
                     </>
                 ) : null}
-                <button className="btn" onClick={() => this.save()}>
-                    Save Machine
-                </button>
             </>
         );
     }
