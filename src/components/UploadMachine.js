@@ -71,7 +71,7 @@ class UploadMachine extends Component {
                             id="upload-modeljson"
                             title={"Upload Model"}
                             helperText="Upload the model.json file here"
-                            multiple="false"
+                            multiple={false}
                             fileType=".json"
                             onChange={this.receiveModel}
                         ></Uploader2>
@@ -80,7 +80,7 @@ class UploadMachine extends Component {
                             id="upload-modelweights"
                             title={"Upload Weights"}
                             helperText="Upload the model.weights.bin file here"
-                            multiple="false"
+                            multiple={false}
                             fileType=".bin"
                             onChange={this.receiveWeights}
                         ></Uploader2>
@@ -110,6 +110,8 @@ class UploadMachine extends Component {
                         </button>
                     )}
                 </div>
+                
+                <br></br>
             </>
         );
     }

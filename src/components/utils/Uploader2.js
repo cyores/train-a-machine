@@ -23,13 +23,42 @@ class Uploader2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            gotFiles: false
+            gotFiles: false,
+            fileData: [],
+            filesAreImages: false
         };
         this.onChange = this.onChange.bind(this);
     }
     onChange(files) {
-        this.setState({ gotFiles: true });
-        this.props.onChange(files);
+        let fileArr = Array.from(files);
+        let fileData = [];
+        let filesAreImages = false;
+
+        if (files[0].type.includes("image")) {
+            filesAreImages = true;
+        }
+
+        if (filesAreImages) {
+            fileArr.forEach(file => {
+                fileData.push(URL.createObjectURL(file));
+            });
+        } else {
+            fileArr.forEach(file => {
+                fileData.push(file.name);
+            });
+        }
+
+        this.setState({
+            gotFiles: true,
+            fileData: fileData,
+            filesAreImages: filesAreImages
+        });
+
+        if (filesAreImages) {
+            this.props.onChange(fileData);
+        } else {
+            this.props.onChange(files);
+        }
     }
     render() {
         return (
@@ -37,7 +66,38 @@ class Uploader2 extends Component {
                 <Area>
                     <Flex dir="colcenter">
                         {this.state.gotFiles ? (
-                            <><h5>Upload complete!</h5></>
+                            <>
+                                <h5>Upload complete!</h5>
+                                {this.state.filesAreImages ? (
+                                    <Flex>
+                                        {this.state.fileData.map((image, i) => (
+                                            <div
+                                                key={
+                                                    "img" + this.props.title + i
+                                                }
+                                                style={{
+                                                    flex: "1 0 100px",
+                                                    margin: "1rem"
+                                                }}
+                                            >
+                                                <img
+                                                    src={image}
+                                                    style={{
+                                                        maxHeight: "100px"
+                                                    }}
+                                                    alt=""
+                                                />
+                                            </div>
+                                        ))}
+                                    </Flex>
+                                ) : (
+                                    <Flex dir="colcenter">
+                                        {this.state.fileData.map((name, i) => (
+                                            <p key={name + i}>{name}</p>
+                                        ))}
+                                    </Flex>
+                                )}
+                            </>
                         ) : (
                             <>
                                 <h5>{this.props.title}</h5>
@@ -56,7 +116,7 @@ class Uploader2 extends Component {
                                 <input
                                     type="file"
                                     id={"upload-" + this.props.id}
-                                    multiple={this.props.mulitple}
+                                    multiple={this.props.multiple}
                                     accept={this.props.fileType}
                                     onChange={input =>
                                         this.onChange(input.target.files)
