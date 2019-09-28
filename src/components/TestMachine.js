@@ -20,8 +20,7 @@ const Card = styled.div`
 
 const mapStateToProps = state => {
     return {
-        machine: state.machineReducer.machine,
-        testImages: state.imageReducer.testImages
+        machine: state.machineReducer.machine
     };
 };
 

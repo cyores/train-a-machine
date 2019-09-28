@@ -22,13 +22,6 @@ export function updateActiveSection(section) {
     return { type: UPDATE_ACTIVE_SECTION, section };
 }
 
-// IMAGE
-export const ADD_IMAGE_BATCH = "ADD_IMAGE_BATCH";
-
-export function addImageBatch(labeledImages) {
-    return { type: ADD_IMAGE_BATCH, labeledImages };
-}
-
 // MACHINE
 export const START_MACHINE = "START_MACHINE";
 export const UPDATE_MACHINE = "UPDATE_MACHINE";

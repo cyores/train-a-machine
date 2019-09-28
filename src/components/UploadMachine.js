@@ -11,7 +11,6 @@ import Uploader2 from "./utils/Uploader2";
 const mapStateToProps = state => {
     return {
         classes: state.classReducer.classes,
-        trainingImages: state.imageReducer.trainingImages,
         machine: state.machineReducer.machine
     };
 };
@@ -110,7 +109,7 @@ class UploadMachine extends Component {
                         </button>
                     )}
                 </div>
-                
+
                 <br></br>
             </>
         );

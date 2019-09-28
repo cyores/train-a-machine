@@ -1,32 +1,16 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import { connect } from "react-redux";
 
 import { updateMachine, updateActiveSection } from "../actions/index";
 
 // components
 import Flex from "./utils/Flex";
-import Uploader from "./Uploader";
 import Progress from "./Progress";
-
-const Area = styled.div`
-    min-height: 375px;
-    margin: var(--space-xxxs);
-    margin-bottom: var(--space-sm);
-    background: #eee;
-    border-radius: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    color: var(--color-text-dark);
-    flex: 1 0 350px;
-    & > h5 {
-        margin: 1rem;
-    }
-`;
+import Uploader2 from "./utils/Uploader2";
 
 const mapStateToProps = state => {
     return {
         classes: state.classReducer.classes,
-        trainingImages: state.imageReducer.trainingImages,
         machine: state.machineReducer.machine
     };
 };
@@ -43,11 +27,13 @@ class Train extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            trainingImages: [],
             training: false,
             currLoss: 0,
             firstLoss: 0,
             doneTraining: false
         };
+        this.receiveImages = this.receiveImages.bind(this);
     }
     trainMachine() {
         this.setState({ training: true });
@@ -58,7 +44,7 @@ class Train extends Component {
         setTimeout(() => {
             let first = true;
             let machine = this.props.machine;
-            machine.train(this.props.trainingImages, loss => {
+            machine.train(this.state.trainingImages, loss => {
                 if (!first && loss === null) {
                     this.setState({ doneTraining: true });
                     this.props.updateMachine(machine);
@@ -70,24 +56,36 @@ class Train extends Component {
             });
         });
     }
+    receiveImages(files, className) {
+        let labeledImgs = {
+            label: className,
+            images: files
+        };
+        let trainingImages = this.state.trainingImages;
+        trainingImages.push(labeledImgs);
+        this.setState({ trainingImages: trainingImages });
+    }
     render() {
         return (
             <>
                 <div className="u-my2">
                     <Flex>
                         {this.props.classes.map(c => (
-                            <Area key={`area-${c.id}`}>
-                                <h5>{c.name}</h5>
-                                <Uploader
-                                    title={c.name}
-                                    imagesFor="training"
-                                    helperText="Click here to upload training images"
-                                />
-                            </Area>
+                            <Uploader2
+                                key={`upload-${c.id}`}
+                                id={`upload-${c.id}`}
+                                title={c.name}
+                                helperText="Click here to upload training images"
+                                multiple={true}
+                                fileType="image/*"
+                                onChange={files =>
+                                    this.receiveImages(files, c.name)
+                                }
+                            ></Uploader2>
                         ))}
                     </Flex>
 
-                    {this.props.trainingImages.length === 0 ? null : (
+                    {this.state.trainingImages.length === 0 ? null : (
                         <Flex>
                             {this.state.training ? (
                                 <Progress
@@ -104,19 +102,18 @@ class Train extends Component {
                             )}
                         </Flex>
                     )}
-                </div>
-                {this.state.doneTraining && (
-                    <button
-                        className="btn u-float-right"
-                        onClick={() =>
-                            this.props.updateActiveSection("testMachine")
-                        }
-                    >
-                        Next Section &rarr;
-                    </button>
-                )}
 
-                <br></br>
+                    {this.state.doneTraining && (
+                        <button
+                            className="btn u-float-right"
+                            onClick={() =>
+                                this.props.updateActiveSection("testMachine")
+                            }
+                        >
+                            Next Section &rarr;
+                        </button>
+                    )}
+                </div>
             </>
         );
     }
