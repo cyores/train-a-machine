@@ -6,7 +6,7 @@ import { updateMachine, updateActiveSection } from "../actions/index";
 // components
 import Flex from "./utils/Flex";
 import Progress from "./Progress";
-import Uploader2 from "./utils/Uploader2";
+import Uploader from "./utils/Uploader";
 
 const mapStateToProps = state => {
     return {
@@ -71,7 +71,7 @@ class Train extends Component {
                 <div className="u-my2">
                     <Flex>
                         {this.props.classes.map(c => (
-                            <Uploader2
+                            <Uploader
                                 key={`upload-${c.id}`}
                                 id={`upload-${c.id}`}
                                 title={c.name}
@@ -81,7 +81,7 @@ class Train extends Component {
                                 onChange={files =>
                                     this.receiveImages(files, c.name)
                                 }
-                            ></Uploader2>
+                            />
                         ))}
                     </Flex>
 

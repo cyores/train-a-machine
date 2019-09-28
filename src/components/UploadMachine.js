@@ -6,7 +6,7 @@ import { updateMachine, updateActiveSection } from "../actions/index";
 
 // components
 import Flex from "./utils/Flex";
-import Uploader2 from "./utils/Uploader2";
+import Uploader from "./utils/Uploader";
 
 const mapStateToProps = state => {
     return {
@@ -66,23 +66,23 @@ class UploadMachine extends Component {
             <>
                 <div className="u-my2">
                     <Flex>
-                        <Uploader2
+                        <Uploader
                             id="upload-modeljson"
                             title={"Upload Model"}
                             helperText="Upload the model.json file here"
                             multiple={false}
                             fileType=".json"
                             onChange={this.receiveModel}
-                        ></Uploader2>
+                        />
 
-                        <Uploader2
+                        <Uploader
                             id="upload-modelweights"
                             title={"Upload Weights"}
                             helperText="Upload the model.weights.bin file here"
                             multiple={false}
                             fileType=".bin"
                             onChange={this.receiveWeights}
-                        ></Uploader2>
+                        />
                     </Flex>
                     {this.state.loading && !this.state.modelLoaded && (
                         <>

@@ -6,7 +6,7 @@ import LoadingImg from "../images/loading.svg";
 // components
 import Flex from "./utils/Flex";
 
-import Uploader2 from "./utils/Uploader2";
+import Uploader from "./utils/Uploader";
 
 const Card = styled.div`
     flex: 0 0 200px;
@@ -64,14 +64,14 @@ class TestMachine extends Component {
                     Save Machine
                 </button>
                 <Flex>
-                    <Uploader2
+                    <Uploader
                         id="upload-testingImages"
                         title={"Upload testing images"}
                         helperText="Click here to upload testing images"
                         multiple={true}
                         fileType="image/*"
                         onChange={this.receiveTestingImage}
-                    ></Uploader2>
+                    />
                 </Flex>
                 {this.state.imagesToTest.length > 0 &&
                 !this.state.classifying &&
