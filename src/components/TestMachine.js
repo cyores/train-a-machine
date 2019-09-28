@@ -9,7 +9,7 @@ import Flex from "./utils/Flex";
 import Uploader from "./utils/Uploader";
 
 const Card = styled.div`
-    flex: 0 0 200px;
+    flex: 0 0 300px;
     border-radius: 1rem;
     margin: var(--space-xxxs);
     margin-bottom: var(--space-lg);
@@ -60,12 +60,9 @@ class TestMachine extends Component {
     render() {
         return (
             <>
-                <button className="btn" onClick={() => this.save()}>
-                    Save Machine
-                </button>
                 <Flex>
                     <Uploader
-                        id="upload-testingImages"
+                        id={`upload-testingImages-${this.props.id}`}
                         title={"Upload testing images"}
                         helperText="Click here to upload testing images"
                         multiple={true}
@@ -73,19 +70,29 @@ class TestMachine extends Component {
                         onChange={this.receiveTestingImage}
                     />
                 </Flex>
-                {this.state.imagesToTest.length > 0 &&
-                !this.state.classifying &&
-                !this.state.done ? (
-                    <button className="btn" onClick={() => this.testMachine()}>
-                        Test Machine
+
+                <Flex dir="rowleft">
+                    {this.state.imagesToTest.length > 0 &&
+                    !this.state.classifying &&
+                    !this.state.done ? (
+                        <button
+                            className="btn"
+                            onClick={() => this.testMachine()}
+                        >
+                            Test Machine
+                        </button>
+                    ) : null}
+
+                    <button className="btn" onClick={() => this.save()}>
+                        Save Machine
                     </button>
-                ) : null}
+                </Flex>
 
                 {this.state.classifying ? (
-                    <>
+                    <Flex dir="colcenter">
                         <img src={LoadingImg} alt="loading" />
                         <h5>Classifying Images . . . </h5>
-                    </>
+                    </Flex>
                 ) : null}
 
                 {this.state.done ? (

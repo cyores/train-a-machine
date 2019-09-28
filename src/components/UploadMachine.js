@@ -99,18 +99,20 @@ class UploadMachine extends Component {
                         </>
                     )}
                     {this.state.modelLoaded && (
-                        <button
-                            className="btn u-float-right"
-                            onClick={() =>
-                                this.props.updateActiveSection("testMachine")
-                            }
-                        >
-                            Next Section &rarr;
-                        </button>
+                        <Flex dir="rowright">
+                            <button
+                                className="btn"
+                                onClick={() =>
+                                    this.props.updateActiveSection(
+                                        "testMachine2"
+                                    )
+                                }
+                            >
+                                Next Section &rarr;
+                            </button>
+                        </Flex>
                     )}
                 </div>
-
-                <br></br>
             </>
         );
     }

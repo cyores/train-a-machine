@@ -41,7 +41,7 @@ class Section extends Component {
     componentDidUpdate() {
         if (this.props.activeSection === this.props.name) {
             if (!this.state.started) this.setState({ started: true });
-            window.scrollTo(0, this.scrollHere.current.offsetTop);
+            window.scrollTo(0, this.scrollHere.current.offsetTop + 50);
         } else {
             if (this.state.started && !this.state.complete) {
                 this.setState({ complete: true });
@@ -51,7 +51,7 @@ class Section extends Component {
     render() {
         return (
             <>
-                <div ref={this.scrollHere}>
+                <div className="u-my2" ref={this.scrollHere}>
                     <div
                         style={
                             this.props.activeSection === this.props.name

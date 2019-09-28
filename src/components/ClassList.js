@@ -82,20 +82,22 @@ class ClassList extends Component {
                             </button>
                         </div>
                     </Flex>
-                </div>
 
-                {this.props.classes.length > 0 && (
-                    <button
-                        className="btn u-float-right"
-                        onClick={() =>
-                            this.props.updateActiveSection("uploadImages")
-                        }
-                    >
-                        Next Section &rarr;
-                    </button>
-                )}
-                
-                <br></br>
+                    {this.props.classes.length > 0 && (
+                        <Flex dir="rowright">
+                            <button
+                                className="btn"
+                                onClick={() =>
+                                    this.props.updateActiveSection(
+                                        "uploadImages"
+                                    )
+                                }
+                            >
+                                Next Section &rarr;
+                            </button>
+                        </Flex>
+                    )}
+                </div>
             </>
         );
     }

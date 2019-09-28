@@ -110,8 +110,6 @@ class App extends Component {
                                 <ClassList />
                             </Section>
 
-                            {/* <br></br> */}
-
                             <Section
                                 name="uploadImages"
                                 title="Upload Training Images"
@@ -125,6 +123,14 @@ class App extends Component {
                                 </p>
 
                                 <Train />
+                            </Section>
+
+                            <Section
+                                name="testMachine1"
+                                title="Test the Machine"
+                                number="3"
+                            >
+                                <TestMachine id="tm1" />
                             </Section>
                         </div>
 
@@ -147,15 +153,16 @@ class App extends Component {
 
                                 <UploadMachine />
                             </Section>
+
+                            <Section
+                                name="testMachine2"
+                                title="Test the Machine"
+                                number="2"
+                            >
+                                <TestMachine id="tm2" />
+                            </Section>
                         </div>
 
-                        <Section
-                            name="testMachine"
-                            title="Test the Machine"
-                            number="3"
-                        >
-                            <TestMachine />
-                        </Section>
                     </Flex>
                 </div>
 

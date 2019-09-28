@@ -19,7 +19,7 @@ export default class Progress extends Component {
         return (
             <div
                 className="u-my3"
-                style={{ textAlign: "center", minHeight: "150px" }}
+                style={{ textAlign: "center" }}
             >
                 {!this.state.sawFirstLoss ? (
                     <>
