@@ -3,26 +3,10 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import LoadingImg from "../images/loading.svg";
 
-import { addTestImages } from "../actions/index";
-
 // components
 import Flex from "./utils/Flex";
-// import Uploader from "./Uploader";
-import Uploader2 from "./utils/Uploader2";
 
-// const Area = styled.div`
-//     min-height: 375px;
-//     margin: var(--space-xxxs);
-//     margin-bottom: var(--space-sm);
-//     background: #eee;
-//     border-radius: 1rem;
-//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-//     color: var(--color-text-dark);
-//     flex: 1 0 350px;
-//     & > h5 {
-//         margin: 1rem;
-//     }
-// `;
+import Uploader2 from "./utils/Uploader2";
 
 const Card = styled.div`
     flex: 0 0 200px;
@@ -41,12 +25,6 @@ const mapStateToProps = state => {
     };
 };
 
-function mapDispatchToProps(dispatch) {
-    return {
-        addTestImages: images => dispatch(addTestImages(images))
-    };
-}
-
 class TestMachine extends Component {
     constructor(props) {
         super(props);
@@ -62,7 +40,6 @@ class TestMachine extends Component {
         this.setState({ classifying: true });
         setTimeout(() => {
             let promiseArray = this.props.machine.classify(
-                // this.props.testImages
                 this.state.imagesToTest
             );
             Promise.all(promiseArray).then(results => {
@@ -88,14 +65,6 @@ class TestMachine extends Component {
                     Save Machine
                 </button>
                 <Flex>
-                    {/* <Area>
-                        <h5>Upload testing images</h5>
-                        <Uploader
-                            title="Upload Test Image(s)"
-                            imagesFor="validation"
-                            helperText="Click here to upload testing images"
-                        />
-                    </Area> */}
                     <Uploader2
                         id="upload-testingImages"
                         title={"Upload testing images"}
@@ -163,7 +132,4 @@ class TestMachine extends Component {
     }
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(TestMachine);
+export default connect(mapStateToProps)(TestMachine);

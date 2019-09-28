@@ -24,14 +24,9 @@ export function updateActiveSection(section) {
 
 // IMAGE
 export const ADD_IMAGE_BATCH = "ADD_IMAGE_BATCH";
-export const ADD_TEST_IMAGES = "ADD_TEST_IMAGES";
 
 export function addImageBatch(labeledImages) {
     return { type: ADD_IMAGE_BATCH, labeledImages };
-}
-
-export function addTestImages(images) {
-    return { type: ADD_TEST_IMAGES, images };
 }
 
 // MACHINE
@@ -45,4 +40,3 @@ export function startMachine() {
 export function updateMachine(machine) {
     return { type: UPDATE_MACHINE, machine };
 }
-

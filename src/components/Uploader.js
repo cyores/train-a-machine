@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import UploadImg from "../images/undraw_going_up_comp.svg";
 
-import { addImageBatch, addTestImages } from "../actions/index";
+import { addImageBatch } from "../actions/index";
 
 // components
 import Flex from "./utils/Flex";
 
 function mapDispatchToProps(dispatch) {
     return {
-        addImageBatch: images => dispatch(addImageBatch(images)),
-        addTestImages: images => dispatch(addTestImages(images))
+        addImageBatch: images => dispatch(addImageBatch(images))
     };
 }
 
@@ -40,7 +39,7 @@ class Uploader extends Component {
                 images: imgs
             });
         }
-        if(this.props.imagesFor === "validation") {
+        if (this.props.imagesFor === "validation") {
             this.props.addTestImages(imgs);
         }
     }
