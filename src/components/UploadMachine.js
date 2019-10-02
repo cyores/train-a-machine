@@ -18,8 +18,8 @@ const mapStateToProps = state => {
 function mapDispatchToProps(dispatch) {
     return {
         updateMachine: machine => dispatch(updateMachine(machine)),
-        updateActiveSection: activeSection =>
-            dispatch(updateActiveSection(activeSection))
+        updateActiveSection: (activeSection, doneSection) =>
+            dispatch(updateActiveSection(activeSection, doneSection))
     };
 }
 
@@ -104,7 +104,8 @@ class UploadMachine extends Component {
                                 className="btn"
                                 onClick={() =>
                                     this.props.updateActiveSection(
-                                        "testMachine2"
+                                        "testMachine2",
+                                        true
                                     )
                                 }
                             >

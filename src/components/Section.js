@@ -19,7 +19,10 @@ const Number = styled.div`
 `;
 
 const mapStateToProps = state => {
-    return { activeSection: state.sectionReducer.activeSection };
+    return {
+        activeSection: state.sectionReducer.activeSection,
+        doneSecions: state.sectionReducer.doneSections
+    };
 };
 
 function mapDispatchToProps(dispatch) {
@@ -49,6 +52,7 @@ class Section extends Component {
         }
     }
     render() {
+        const complete = this.props.doneSecions.includes(this.props.name);
         return (
             <>
                 <div className="u-my2" ref={this.scrollHere}>
@@ -66,7 +70,7 @@ class Section extends Component {
                         }
                     >
                         <h3>
-                            {this.state.complete ? (
+                            {complete ? (
                                 <Number
                                     style={{ borderColor: "rgb(0,200,20)" }}
                                 >

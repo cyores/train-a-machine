@@ -18,8 +18,8 @@ export function updateClass(classID, newName) {
 // SECTION
 export const UPDATE_ACTIVE_SECTION = "UPDATE_ACTIVE_SECTION";
 
-export function updateActiveSection(section) {
-    return { type: UPDATE_ACTIVE_SECTION, section };
+export function updateActiveSection(section, doneSection = false) {
+    return { type: UPDATE_ACTIVE_SECTION, section, doneSection };
 }
 
 // MACHINE

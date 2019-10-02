@@ -21,8 +21,8 @@ function mapDispatchToProps(dispatch) {
             dispatch(updateClass(classID, newName)),
         deleteClass: classID => dispatch(deleteClass(classID)),
         addClass: newClass => dispatch(addClass(newClass)),
-        updateActiveSection: activeSection =>
-            dispatch(updateActiveSection(activeSection))
+        updateActiveSection: (activeSection, doneSection) =>
+            dispatch(updateActiveSection(activeSection, doneSection))
     };
 }
 
@@ -94,7 +94,8 @@ class ClassList extends Component {
                                 className="btn"
                                 onClick={() =>
                                     this.props.updateActiveSection(
-                                        "uploadImages"
+                                        "uploadImages",
+                                        true
                                     )
                                 }
                             >
