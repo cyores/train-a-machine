@@ -34,7 +34,7 @@ class ClassList extends Component {
                     <Flex dir="colcenter">
                         {this.props.classes.length === 0 ? (
                             <>
-                                <h6>Try adding some classes</h6>
+                                <h6>Add at least 2 classes</h6>
                                 <img
                                     src={NoData}
                                     width="125px"
@@ -43,7 +43,12 @@ class ClassList extends Component {
                             </>
                         ) : (
                             <div>
-                                <h6>Your Classes</h6>
+                                <h6>
+                                    Your Classes{" "}
+                                    {this.props.classes.length === 1 ? (
+                                        <span>(need 1 more)</span>
+                                    ) : null}
+                                </h6>
                             </div>
                         )}
 
@@ -83,7 +88,7 @@ class ClassList extends Component {
                         </div>
                     </Flex>
 
-                    {this.props.classes.length > 0 && (
+                    {this.props.classes.length > 1 && (
                         <Flex dir="rowright">
                             <button
                                 className="btn"

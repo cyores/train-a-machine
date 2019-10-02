@@ -102,9 +102,16 @@ class App extends Component {
                                     to teach the machine to identify different
                                     species of trees, you would create one class
                                     for each species of tree you wanted to
-                                    identify. Or if you wanted to just teach the
+                                    identify.{" "}
+                                    <b>
+                                        The machine needs at least two classes
+                                        to work.
+                                    </b>{" "}
+                                    For example, if you wanted to teach the
                                     machine to identify cats, you would create
-                                    just one class: "cats".
+                                    two class: "cats" and "not cats". In the
+                                    "not cats" class, you could upload any
+                                    pictures that are not cats.
                                 </p>
 
                                 <ClassList />
@@ -162,7 +169,6 @@ class App extends Component {
                                 <TestMachine id="tm2" />
                             </Section>
                         </div>
-
                     </Flex>
                 </div>
 
