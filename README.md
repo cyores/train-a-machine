@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4e7b37f8-b015-4601-880f-c03034446394/deploy-status)](https://app.netlify.com/sites/teachamachine/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
